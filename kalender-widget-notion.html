@@ -170,13 +170,13 @@
     <button class="nav-btn" onclick="changeMonth(1)">&#8250;</button>
   </div>
   <div class="weekdays">
-    <div class="weekday">zo</div>
     <div class="weekday">ma</div>
     <div class="weekday">di</div>
     <div class="weekday">wo</div>
     <div class="weekday">do</div>
     <div class="weekday">vr</div>
     <div class="weekday">za</div>
+    <div class="weekday">zo</div>
   </div>
   <div class="days" id="daysGrid"></div>
   <div class="footer">
@@ -197,7 +197,8 @@
     const grid = document.getElementById('daysGrid');
     grid.innerHTML = '';
 
-    const firstDay = new Date(year, month, 1).getDay();
+    const firstDayRaw = new Date(year, month, 1).getDay();
+    const firstDay = (firstDayRaw + 6) % 7; // maandag = 0
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const daysInPrev = new Date(year, month, 0).getDate();
 
